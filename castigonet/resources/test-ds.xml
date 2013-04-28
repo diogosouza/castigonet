@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+    <datasource 
+        jndi-name="testDatasource"
+        enabled="true" 
+        use-java-context="true" pool-name="testDatasource_pool">
+        <connection-url>jdbc:mysql://localhost:3306/JUDCON_CASTIGO_NET</connection-url>
+        <driver>mysql-connector-java-5.1.22-bin.jar</driver>
+        <security>
+		      <user-name>root</user-name>
+		      <password>root</password>
+        </security>
+    </datasource>
+</datasources>

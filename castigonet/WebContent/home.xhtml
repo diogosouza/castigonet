@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+		<script type="type/javascript" src="resource://jquery.js"></script>
+		<h1>Welcome to Castigo.Net!</h1>
+		<rich:panel>
+			<h:form id="form">
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/img/castigo.jpg" alt="Seam logo" />
+					<s:div styleClass="info">
+						<h:panelGrid columns="2">
+							<h:outputText value="Punishment Type:" />
+							<h:selectOneMenu value="#{controller.punishment.punishmentType}" id="selectPunhishs">
+								<s:selectItems value="#{controller.punish}" var="punish" label="#{punish.descricao}"></s:selectItems>
+								<s:convertEnum></s:convertEnum>
+							</h:selectOneMenu>
+							
+							<h:outputText value="Name:" />
+							<h:inputText value="#{controller.punishment.punido}" />
+							
+							<h:outputText value="Comment:" />
+							<h:inputTextarea value="#{controller.punishment.comentario}" />
+							
+							<h:commandButton action="#{controller.addPunishment()}" value="Enviar" />
+						</h:panelGrid>
+					</s:div>
+				</h:panelGrid>
+			</h:form>
+		</rich:panel>
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				$("#form\\:selectPunhishs option[value='CURRIES']").css('background-color', 'red');
+			});
+		</script>
+	</ui:define>
+</ui:composition>

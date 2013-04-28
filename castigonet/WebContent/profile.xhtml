@@ -1,0 +1,27 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h1>Welcome to Castigo.Net!</h1>
+		<rich:panel>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/img/castigo.jpg" alt="Seam logo" />
+					<s:div styleClass="info" style="padding: 10px 30px;border-bottom:1px solid gray;">
+						<h3><h:outputText value="Acabo de castigar meu filho #{controller.punishment.punido} 
+							a #{controller.punishment.punishmentType.descricao}!" /></h3>
+						<em><h:outputText value="#{controller.punishment.comentario}!" /></em>
+					</s:div>
+				</h:panelGrid>
+			</h:form>
+		</rich:panel>
+
+	</ui:define>
+</ui:composition>

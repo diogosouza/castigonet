@@ -1,0 +1,64 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+		<script type="type/javascript" src="resource://jquery.js"></script>
+		<h1>Search to Castigo.Net!</h1>
+		<h:form id="form">
+		<rich:panel>
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/img/castigo.jpg" alt="Seam logo" />
+					<s:div styleClass="info">
+						<h:panelGrid columns="2">
+							<h:outputText value="Revision:" />
+							<h:inputText value="#{controller.rev}" />
+							
+							<a4j:commandButton action="#{controller.searchPunishments()}" value="Enviar" render="listPunishs"/>
+						</h:panelGrid>
+					</s:div>
+				</h:panelGrid>
+				<rich:dataTable value="#{controller.list}" var="punish" border="1" 
+					id="listPunishs" style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Punishment's History" />
+					</f:facet>
+					
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Rev" />
+						</f:facet>
+						<h:outputText value="#{punish.rev}" />
+					</rich:column>
+					
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+						<h:outputText value="#{punish.punishment.punido}" />
+					</rich:column>
+					
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Punishment" />
+						</f:facet>
+						<h:outputText value="#{punish.punishment.punishmentType.descricao}" />
+					</rich:column>
+					
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="Comment" />
+						</f:facet>
+						<h:outputText value="#{punish.punishment.comentario}" />
+					</rich:column>
+				</rich:dataTable>
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
